@@ -1,0 +1,75 @@
+# _config.yml
+title: Your Site Title
+description: Your site description
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# index.md
+---
+layout: home
+title: Welcome
+---
+
+# Welcome to My Site
+This is my Jekyll-powered website.
+
+# _layouts/default.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} - {{ site.title }}</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/blog">Blog</a>
+        </nav>
+    </header>
+    
+    <main>
+        {{ content }}
+    </main>
+
+    <footer>
+        <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </footer>
+</body>
+</html>
+
+# _layouts/post.html
+---
+layout: default
+---
+<article class="post">
+    <h1>{{ page.title }}</h1>
+    <time>{{ page.date | date: "%B %d, %Y" }}</time>
+    {{ content }}
+</article>
+
+# assets/css/style.scss
+---
+---
+@import "{{ site.theme }}";
+
+// Custom styles
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    line-height: 1.6;
+}
+
+header {
+    margin-bottom: 2rem;
+}
+
+nav a {
+    margin-right: 1rem;
+}
